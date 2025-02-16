@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Conversao de Moedas</string>
+    <string name="textview">CONVERTER DOLAR EM REAL</string>
+    <string name="btnConverter">CONVETER</string>
+</resources>
