@@ -2,4 +2,10 @@
     <string name="app_name">Conversao de Moedas</string>
     <string name="textview">CONVERTER DOLAR EM REAL</string>
     <string name="btnConverter">CONVETER</string>
+    <string name="cotacao_dolar_real">Cotação Dólar - Real</string>
+    <string name="converter">CONVERTER</string>
+    <string name="resultado">RESULTADO:</string>
+    <string name="valor_da_cotacao">Valor da cotação</string>
+    <string name="valor_em_real">Valor em Real</string>
+    <string name="valor_em_dolar">Valor em Dolar</string>
 </resources>

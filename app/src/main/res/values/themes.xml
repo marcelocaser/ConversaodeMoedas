@@ -5,5 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.ConversaoDeMoedas" parent="Base.Theme.ConversaoDeMoedas" />
+    <style name="Theme.ConversaoDeMoedas" parent="Base.Theme.ConversaoDeMoedas">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
 </resources>

@@ -6,13 +6,17 @@
     android:orientation="vertical"
     android:padding="50sp">
 
-
     <TextView
         android:id="@+id/txtConverterDolarReal"
         android:layout_width="307dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="monospace"
         android:text="@string/textview"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/valorReal"
@@ -20,9 +24,10 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Valor em Real"
+        android:hint="@string/valor_em_real"
         android:inputType="number|numberDecimal"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63" />
 
     <EditText
         android:id="@+id/valorCotacao"
@@ -30,27 +35,27 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Valor da cotação"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/valor_da_cotacao"
         android:inputType="number|numberDecimal"
         android:minHeight="48dp"
         android:textColorHint="#8D6E63" />
-
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RESULTADO:"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnConverter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="converter"
-        android:text="CONVERTER"
+        android:text="@string/converter"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tblCotacoes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp" />
 
 </LinearLayout>
