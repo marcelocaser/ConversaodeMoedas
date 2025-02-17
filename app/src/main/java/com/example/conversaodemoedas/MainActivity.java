@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         Double calcValorReal = Double.parseDouble(valorReal.getText().toString());
         Double calcValorCotacao = Double.parseDouble(valorCotacao.getText().toString());
-        Double conversaoRealDolar = calcValorReal * calcValorCotacao;
+        Double conversaoRealDolar = calcValorReal / calcValorCotacao;
         Log.d("API", "Resultado conversao: " + conversaoRealDolar);
 
         DataModel dataModel = new DataModel(calcValorReal, conversaoRealDolar);
