@@ -3,6 +3,7 @@ package com.example.conversaodemoedas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.example.conversaodemoedas.entity.Usuario;
 import com.example.conversaodemoedas.model.DataModel;
 import com.example.conversaodemoedas.model.adpter.DataAdapter;
 import com.example.conversaodemoedas.persistence.AppDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private AppDatabase db;
     private TextView valorCotacao;
     private RecyclerView recyclerView;
-    private List<DataModel> dataCotacoes = new ArrayList<>();
+    private final List<DataModel> dataCotacoes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,36 +52,8 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         buscarCotacaoDolarEmReal();
+        carregarBandeiraPais();
         //carregarUsuarios();
-    }
-
-    public void converter(View view) {
-        TextView valorReal = findViewById(R.id.valorReal);
-
-        Double calcValorReal = Double.parseDouble(valorReal.getText().toString());
-        Double calcValorCotacao = Double.parseDouble(valorCotacao.getText().toString());
-        Double conversaoRealDolar = calcValorReal / calcValorCotacao;
-        Log.d("API", "Resultado conversao: " + conversaoRealDolar);
-
-        DataModel dataModel = new DataModel(calcValorReal, conversaoRealDolar);
-
-        dataCotacoes.add(dataModel);
-
-        // Nomes das colunas
-        String[] columnNames = {"R$ (Real)", "$ (Dolar Americano)"};
-
-        DataAdapter adapter = new DataAdapter(dataCotacoes, columnNames);
-        recyclerView.setAdapter(adapter);
-        //resultado.setText(r);
-    }
-
-    private void carregarUsuarios() {
-        List<Usuario> lista = db.usuarioDao().listarTodos();
-        StringBuilder builder = new StringBuilder();
-        for (Usuario u : lista) {
-            builder.append(u.getNome()).append(" - ").append(u.getEmail()).append("\n");
-        }
-        //resultado.setText(builder.toString());
     }
 
     public void buscarCotacaoDolarEmReal() {
@@ -105,5 +79,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void carregarUsuarios() {
+        List<Usuario> lista = db.usuarioDao().listarTodos();
+        StringBuilder builder = new StringBuilder();
+        for (Usuario u : lista) {
+            builder.append(u.getNome()).append(" - ").append(u.getEmail()).append("\n");
+        }
+        //resultado.setText(builder.toString());
+    }
+
+    private void carregarBandeiraPais() {
+        ImageView imageViewDolar = findViewById(R.id.imgBandeiraDolar);
+        ImageView imageViewReal = findViewById(R.id.imgBandeiraReal);
+        String imageUrlBr = "https://flagsapi.com/BR/shiny/64.png";  // URL da imagem
+        String imageUrlUs = "https://flagsapi.com/US/shiny/64.png";
+
+        Picasso.get()
+                .load(imageUrlBr)
+                //.placeholder(R.drawable.placeholder)
+                //.error(R.drawable.error)
+                .into(imageViewReal);
+
+        Picasso.get()
+                .load(imageUrlUs)
+                //.placeholder(R.drawable.placeholder)
+                //.error(R.drawable.error)
+                .into(imageViewDolar);
+    }
+
+    public void converter(View view) {
+        TextView valorReal = findViewById(R.id.valorReal);
+
+        Double calcValorReal = Double.parseDouble(valorReal.getText().toString());
+        Double calcValorCotacao = Double.parseDouble(valorCotacao.getText().toString());
+        Double conversaoRealDolar = calcValorReal / calcValorCotacao;
+        Log.d("API", "Resultado conversao: " + conversaoRealDolar);
+
+        DataModel dataModel = new DataModel(calcValorReal, conversaoRealDolar);
+
+        dataCotacoes.add(dataModel);
+
+        // Nomes das colunas
+        String[] columnNames = {"R$ (Real)", "$ (Dolar Americano)"};
+
+        DataAdapter adapter = new DataAdapter(dataCotacoes, columnNames);
+        recyclerView.setAdapter(adapter);
+        //resultado.setText(r);
     }
 }

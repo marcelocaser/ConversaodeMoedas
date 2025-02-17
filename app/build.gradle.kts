@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.room.runtime)
     implementation(libs.recyclerview)
+    implementation(libs.picasso)
     annotationProcessor(libs.lombok)
     implementation(libs.lombok)
     implementation(libs.gson)
