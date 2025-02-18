@@ -4,7 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.conversaodemoedas.entity.Usuario;
+import com.example.conversaodemoedas.entity.UsuariosTO;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import java.util.List;
 public interface UsuarioDao {
 
     @Insert
-    void inserir(Usuario usuario);
+    void inserir(UsuariosTO usuariosTO);
 
-    @Query("SELECT * FROM usuarios")
-    List<Usuario> listarTodos();
+    @Query("SELECT * FROM Usuarios")
+    List<UsuariosTO> listarTodos();
 }

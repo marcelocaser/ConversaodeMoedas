@@ -4,14 +4,14 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "usuarios")
-public class Usuario {
+public class UsuariosTO {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String nome;
     private String email;
 
-    public Usuario(String nome, String email) {
+    public UsuariosTO(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }

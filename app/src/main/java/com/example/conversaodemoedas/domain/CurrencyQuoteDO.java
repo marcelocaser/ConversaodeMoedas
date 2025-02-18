@@ -10,11 +10,14 @@ import lombok.Setter;
 public class CurrencyQuoteDO {
 
     @SerializedName("USDBRL")
-    private USDBRL usdbrl;
+    private COINS usdbrl;
+
+    @SerializedName("EURBRL")
+    private COINS eurbrl;
 
     @Getter
     @Setter
-    public class USDBRL {
+    public class COINS {
         private String code;
         @SerializedName("codeIn")
         private String codein;
