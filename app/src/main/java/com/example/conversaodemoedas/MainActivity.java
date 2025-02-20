@@ -6,6 +6,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
+import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private PreviewView previewView;
     private ExecutorService cameraExecutor;
     private TextView txtBarcode;
+    private TextView valorReal;
     private static final int REQUEST_CAMERA_PERMISSION = 1001;
 
 
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         //Button btnAdicionar = findViewById(R.id.btnConverter);
         recyclerView = findViewById(R.id.tblCotacoes);
         txtBarcode = findViewById(R.id.txtBarcodeValue);
+        valorReal = findViewById(R.id.valorReal);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         /*btnAdicionar.setOnClickListener(v -> {
@@ -82,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
             db.usuarioDao().inserir(usuario);
             carregarUsuarios();
         });*/
+
+        valorReal.setOnKeyListener((view, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                converter(view);
+                return true; // Indica que o evento foi tratado
+            }
+            return false;
+        });
 
         buscarCotacaoDolarEmReal();
         carregarBandeiraPais();
@@ -188,8 +199,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void converter(View view) {
-        TextView valorReal = findViewById(R.id.valorReal);
-
         Double calcValorReal = Double.parseDouble(valorReal.getText().toString());
         Double calcValorCotacao = Double.parseDouble(valorCotacao.getText().toString());
         Double conversaoRealDolar = calcValorReal / calcValorCotacao;

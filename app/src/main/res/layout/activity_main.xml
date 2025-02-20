@@ -39,7 +39,7 @@
         android:hint="@string/valor_em_real"
         android:inputType="number|numberDecimal"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63" />
+        android:focusableInTouchMode="true"/>
 
     <EditText
         android:id="@+id/valorCotacao"
